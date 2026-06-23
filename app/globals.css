@@ -1,26 +1,420 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background: #f8f5f0;
+  color: #333;
+}
+
+/* Layout */
+
+.page {
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.profile-card,
+.guestbook-list-card,
+.guestbook-form-card {
+  background: #fffdf8;
+  border: 1px solid #e7ddcf;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.profile-card {
+  max-width: 700px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.guestbook-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Profile */
+
+.profile-image-ring {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 50%;
+  background: #f3d48b;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+}
+
+.profile-card h1 {
+  margin: 16px 0 4px;
+  font-size: 28px;
+}
+
+.profile-card h4 {
+  margin: 0;
+  color: #777;
+  font-weight: normal;
+}
+
+.role {
+  margin-top: 8px;
+  color: #6f8f63;
+  font-weight: bold;
+}
+
+.about {
+  margin: 18px auto 0;
+  max-width: 520px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.profile-details {
+  margin: 24px auto 0;
+  padding: 16px;
+  max-width: 520px;
+  list-style: none;
+  text-align: left;
+  background: #fcfaf7;
+  border: 1px solid #ece4d8;
+  border-radius: 14px;
+}
+
+.profile-details li {
+  margin-bottom: 8px;
+}
+
+.profile-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.profile-link {
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.profile-link.dark {
+  background: #333;
+}
+
+.profile-link.green {
+  background: #8fb996;
+}
+
+/* Guestbook */
+
+.section-heading h2,
+.guestbook-form-card h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.section-heading p,
+.form-desc {
+  color: #777;
+  line-height: 1.5;
+}
+
+.message-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.message-card {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: #fcfaf7;
+  border: 1px solid #ece4d8;
+  border-radius: 14px;
+}
+
+.message-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3e1b9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-body {
+  flex: 1;
+}
+
+.message-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.message-name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.message-date {
+  margin: 0;
+  color: #999;
+  font-size: 12px;
+}
+
+.message-text {
+  margin: 8px 0 0;
+  color: #555;
+}
+
+.message-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.message-actions button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #777;
+  cursor: pointer;
+}
+
+/* Login */
+
+.guestbook-tag {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 6px 12px;
+  background: #f6efe4;
+  border-radius: 20px;
+  color: #806a4b;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.mode-grid {
+  margin: 20px 0;
+  display: contents;
+  gap: 12px;
+}
+
+.login-card {
+  margin-bottom: 20px;
+}
+
+.mini-login-form {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.mini-login-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.mini-login-form button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+/* Form */
+
+.guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+}
+
+.input-group textarea {
+  resize: vertical;
+}
+
+.textarea-footer {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  color: #888;
+  font-size: 12px;
+}
+
+.submit-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #8fb996;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .guestbook-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-links,
+  .mini-login-form {
+    flex-direction: column;
+  }
+}
+
+.tab-container {
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+  padding: 4px;
+  background: #f3eee7;
+  border-radius: 12px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #666;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: white;
+  color: #333;
+}
+
+.tab-content {
+  margin-top: 16px;
+}
+
+.login-box {
+  padding: 16px;
+  background: #fcfaf7;
+  border: 1px solid #ece4d8;
+  border-radius: 14px;
+}
+
+.login-note {
+  margin-top: 0;
+  color: #777;
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.edit-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.edit-form input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.message-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-actions button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  /* background: #8fb996; */
+  color: white;
+  cursor: pointer;
+}
+
+.delete-button {
+  background: rgb(205, 43, 43) !important;
+}
+
+.edit-button {
+  background: #8fb996 !important;
+}
+.logout-btn {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: bold;
+  background: rgb(47, 130, 225);
+  border-width: medium;
+  border-style: none;
+  border-color: currentcolor;
+  border-image: initial;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.name-display {
+  background-color: antiquewhite;
+  width: fit-content;
+  padding: 10px;
+  margin: 5px 2px;
+  border-radius: 15px;
+  margin-top: 10px;
 }
