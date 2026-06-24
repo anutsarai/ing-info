@@ -326,7 +326,7 @@ export default async function Home() {
       {/* footer */}
       <footer className="site-footer">
         <p>Made with ☕ - 🌻</p>
-        <p>© 2026</p>
+        <p>© 2026 Guest book, ING</p>
       </footer>
     </main>
   );
