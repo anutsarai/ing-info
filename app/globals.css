@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* set variable for css */
+:root{
+  --red-logout: #cd2b2b;
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -391,7 +397,7 @@ body {
 }
 
 .delete-button {
-  background: rgb(205, 43, 43) !important;
+  background: var(--red-logout) !important;
 }
 
 .edit-button {
@@ -401,7 +407,7 @@ body {
   color: rgb(255, 255, 255);
   cursor: pointer;
   font-weight: bold;
-  background: rgb(47, 130, 225);
+  background: var(--red-logout);
   border-width: medium;
   border-style: none;
   border-color: currentcolor;
@@ -417,4 +423,63 @@ body {
   margin: 5px 2px;
   border-radius: 15px;
   margin-top: 10px;
+}
+
+.site-header {
+  margin: 0 auto 30px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #fffdf8;
+  border-radius: 18px;
+  border: 1px solid #ece7df;
+  font-size: 18px;
+}
+
+.site-footer {
+  max-width: 1100px;
+  margin: 60px auto 20px;
+  text-align: center;
+  color: #888;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.header-nav a:hover {
+  color: #8fb996;
+  text-decoration: underline;
+}
+
+.header-logout-btn {
+  padding: 6px 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--red-logout);
+  color: white;
+
+  cursor: pointer;
+  font-weight: 600;
+
+  transition: 0.2s;
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { revalidatePath } from "next/cache";
-import { sql } from "./lib/db"
+import { sql } from "./lib/db";
 import "./globals.css";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -25,7 +25,7 @@ export default async function Home() {
   const roleCookie = cookieStore.get("role")?.value;
   let currentUser: CurrentUser | null = null;
   if (usernameCookie && roleCookie) {
-      currentUser = {
+    currentUser = {
       username: usernameCookie,
       role: roleCookie,
     };
@@ -36,8 +36,7 @@ export default async function Home() {
                                                           ORDER BY created_at DESC
                                                             `) as GuestbookMessage[];
 
-  
-// comment btn action
+  // comment btn action
   async function addComment(formData: FormData) {
     "use server";
     const username = formData.get("username")?.toString().trim();
@@ -88,7 +87,7 @@ export default async function Home() {
       };
     }
 
-    // set cookies  
+    // set cookies
     const cookieStore = await cookies();
     cookieStore.set("username", users[0].username);
     cookieStore.set("role", users[0].role);
@@ -157,6 +156,34 @@ export default async function Home() {
   // main return
   return (
     <main className="page">
+      <header className="site-header">
+        <div>
+          <h2>Ing’s Little Space</h2>
+        </div>
+        {currentUser !== null ? (
+          <p>
+            Welcome, {currentUser.role}: {currentUser.username}
+          </p>
+        ) : (
+          <p>Welcome, Guest🌷</p>
+        )}
+
+        <nav className="header-nav">
+          <a
+            style={{ margin: "0 0 0 10px" }}
+            href="/register"
+          >
+            Register
+          </a>
+          {currentUser !== null && (
+            <form action={logout}>
+              <button className="header-logout-btn" type="submit">
+                Logout
+              </button>
+            </form>
+          )}
+        </nav>
+      </header>
       <section className="profile-card">
         <div className="profile-image-ring">
           <Image
@@ -173,9 +200,10 @@ export default async function Home() {
         <p className="role">Software Developer 👩🏻‍💻</p>
 
         <p className="about">
-          Halo🐱! I'm learning Next.js one step at a time. Feel free to explore
+          Halo🐱! I&apos;m learning Next.js one step at a time. Feel free to explore
           and leave me some tips along the way. ♡
         </p>
+        <p className="about"></p>
 
         <ul className="profile-details">
           <li>📍 Location: BKK, Thailand</li>
@@ -275,16 +303,17 @@ export default async function Home() {
         <section className="guestbook-form-card">
           <h2 style={{ color: "#8B4513" }}>🌻 Say hi before you go</h2>
           <p className="form-desc">
-            You can comment as anonymous by typing your name or login to
-            edit and delete your own comments later.
+            You can comment as anonymous by typing your name or login to edit
+            and delete your own comments later.
           </p>
-          {currentUser !== null && (
+          {/* {currentUser !== null && (
             <div>
               <h3 style={{ margin: 0 }} className="name-display">
                 👋 Welcome, {currentUser.role}: {currentUser.username}
               </h3>
             </div>
-          )}
+            
+          )} */}
           <GuestBookForm
             addComment={addComment}
             login={login}
@@ -293,6 +322,12 @@ export default async function Home() {
           />{" "}
         </section>
       </section>
+
+      {/* footer */}
+      <footer className="site-footer">
+        <p>Made with ☕ - 🌻</p>
+        <p>© 2026</p>
+      </footer>
     </main>
   );
 }

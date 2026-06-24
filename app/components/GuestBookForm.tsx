@@ -107,11 +107,11 @@ export default function GuestBookForm(props: GuestBookFormProps) {
             You can now edit or delete your own comments.
           </p>
 
-          <form action={props.logout}>
+          {/* <form action={props.logout}>
             <button className="logout-btn" type="submit">
               Logout
             </button>
-          </form>
+          </form> */}
         </div>
       );
     } else {
@@ -154,7 +154,7 @@ export default function GuestBookForm(props: GuestBookFormProps) {
               href="/register"
               style={{
                 marginLeft: "6px",
-                color: "#3b82f6",
+                color: "#8fb996",
                 fontSize: "14px",
                 fontWeight: "600",
                 textDecoration: "underline",
