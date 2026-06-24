@@ -89,14 +89,9 @@ export default function GuestBookForm(props: GuestBookFormProps) {
             name="message"
             rows={5}
             maxLength={300}
-            placeholder="Hi Ing! Keep building awesome things! 🚀"
+            placeholder="Hi Ing! Keep learning!🚀"
             required
           />
-
-          <div className="textarea-footer">
-            <small>Your message will be public 🌍</small>
-            <span>Max 300</span>
-          </div>
         </div>
 
         <button className="submit-btn" type="submit">
